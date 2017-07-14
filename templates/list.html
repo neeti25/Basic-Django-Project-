@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <h1>Users Information</h1>
+    <table width="100%">
+      <tr>
+        <h3>
+        <td>First Name</td>
+        <td>Last Name</td>
+        <td>Email id</td>
+        <td>Actions</td>
+        </h3>
+      </tr>
+    {% for each in object_list %}
+      <tr>
+        <td><a href="{{ each.get_absolute_url }}">{{each.first_name}}</td>
+        <td>{{each.last_name}}</td>
+        <td>{{each.email_id}}</td>
+        <td>
+          <a href="{% url 'info:user_edit' each.id %}">Edit</a>
+          <a href="{% url 'info:user_delete' each.id %}">Delete</a>
+        </td>
+      </tr>
+    {% endfor %}
+  </body>
+</html>
